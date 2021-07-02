@@ -53,8 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   hintText: "00/00/0000",
                   labelText: "Data de Nascimento",
                   helperText: "dd/mm/aaaa",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(16.0),
+                    ),
+                  ),
                 ),
-                // maxLength: 10,
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(10),
                 ],
