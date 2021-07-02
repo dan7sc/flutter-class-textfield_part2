@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -28,12 +30,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String? errorMessage;
 
-  void _incrementCounter() {
+  void validateText(String value) {
     setState(() {
-      _counter++;
+      if (value.isEmpty || (value.length < 10)) {
+        errorMessage = "Preencha corretamente o campo!";
+      } else {
+        errorMessage = null;
+      }
     });
+    return null;
   }
 
   @override
@@ -49,28 +56,40 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                onChanged: (value) => validateText(value),
                 decoration: InputDecoration(
-                  hintText: "00/00/0000",
-                  labelText: "Data de Nascimento",
-                  helperText: "dd/mm/aaaa",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        16.0,
+                    hintText: "00/00/0000",
+                    labelText: "Data de Nascimento",
+                    labelStyle: TextStyle(color: Colors.black),
+                    helperText: "dd/mm/aaaa",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          16.0,
+                        ),
                       ),
                     ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        16.0,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          16.0,
+                        ),
+                      ),
+                      borderSide: BorderSide(
+                        color: Colors.green,
                       ),
                     ),
-                    borderSide: BorderSide(
-                      color: Colors.green,
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          16.0,
+                        ),
+                      ),
+                      borderSide: BorderSide(
+                        color: Colors.red,
+                      ),
                     ),
-                  ),
-                ),
+                    errorText: errorMessage),
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(10),
                 ],
