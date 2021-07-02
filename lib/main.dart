@@ -89,7 +89,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.red,
                       ),
                     ),
-                    errorText: errorMessage),
+                    errorText: errorMessage,
+                    errorStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.orange.shade800,
+                    ),
+                  ),
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(10),
                 ],
