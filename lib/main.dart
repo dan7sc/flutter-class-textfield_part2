@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,6 +54,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   labelText: "Data de Nascimento",
                   helperText: "dd/mm/aaaa",
                 ),
+                // maxLength: 10,
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(10),
+                ],
               ),
             ),
             ElevatedButton(
