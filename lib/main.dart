@@ -55,7 +55,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   helperText: "dd/mm/aaaa",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(16.0),
+                      Radius.circular(
+                        16.0,
+                      ),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(
+                        16.0,
+                      ),
+                    ),
+                    borderSide: BorderSide(
+                      color: Colors.green,
                     ),
                   ),
                 ),
