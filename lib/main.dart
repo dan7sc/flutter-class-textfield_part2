@@ -51,7 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: "Digite aqui seu nome",
+                  // hintText: "Digite aqui seu nome",
+                  labelText: "Digite aqui seu nome",
                 ),
               ),
             ),
