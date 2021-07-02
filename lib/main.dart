@@ -20,8 +20,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
-
-
   final String title;
 
   @override
@@ -51,10 +49,17 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
-                  // hintText: "Digite aqui seu nome",
-                  labelText: "Digite aqui seu nome",
+                  hintText: "00/00/0000",
+                  labelText: "Data de Nascimento",
+                  helperText: "dd/mm/aaaa",
                 ),
               ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                FocusScope.of(context).unfocus();
+              },
+              child: Text("Unfocuss"),
             ),
           ],
         ),
