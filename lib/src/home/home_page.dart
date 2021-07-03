@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     _passwordFocusNode.addListener(() {
-      if (_passwordFocusNode.hasFocus) {
+      if (_passwordFocusNode.hasPrimaryFocus) {
         setState(() {});
       }
     });
