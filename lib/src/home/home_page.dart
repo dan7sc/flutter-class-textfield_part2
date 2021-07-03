@@ -26,6 +26,16 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  void initState() {
+    _passwordFocusNode.addListener(() {
+      if (_passwordFocusNode.hasFocus) {
+        setState(() {});
+      }
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -78,8 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: _passwordController,
                 focusNode: _passwordFocusNode,
                 suffixIcon: _passwordFocusNode.hasFocus
-                  ? ClearButton(controller: _passwordController)
-                  : Container(),
+                    ? ClearButton(controller: _passwordController)
+                    : Container(),
               ),
               SizedBox(
                 height: 8.0,
