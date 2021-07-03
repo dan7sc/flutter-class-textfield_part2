@@ -29,6 +29,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -82,12 +87,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 focusNode: _passwordFocusNode,
                 obscureText: visible,
                 suffixIcon: VisibleWidget(
-                    visible: visible,
-                    onPressed: () {
-                      setState(() {
-                        visible = !visible;
-                      }
-                    );
+                  visible: visible,
+                  onPressed: () {
+                    setState(() {
+                      visible = !visible;
+                    });
                   },
                 ),
               ),
