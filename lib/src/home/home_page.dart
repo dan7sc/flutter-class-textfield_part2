@@ -81,13 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: _passwordController,
                 focusNode: _passwordFocusNode,
                 obscureText: visible,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                      visible ? Icons.lock_outlined : Icons.lock_open_outlined),
-                  onPressed: () {
-                    setState(() {
+                suffixIcon: VisibleWidget(
+                    visible: visible,
+                    onPressed: () {
+                      setState(() {
                         visible = !visible;
-                    });
+                      }
+                    );
                   },
                 ),
               ),
