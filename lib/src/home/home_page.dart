@@ -75,6 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
               CustomTextField(
                 labelText: "Senha",
                 controller: _passwordController,
+                suffixIcon: ClearButton(
+                  controller: _passwordController,
+                ),
               ),
               SizedBox(
                 height: 8.0,
