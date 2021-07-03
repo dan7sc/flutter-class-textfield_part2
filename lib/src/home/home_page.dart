@@ -19,6 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController _cpfController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
+  FocusNode _passwordFocusNode = FocusNode();
 
   void changeVlue() {
     _cpfController.value.text;
@@ -75,9 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
               CustomTextField(
                 labelText: "Senha",
                 controller: _passwordController,
-                suffixIcon: ClearButton(
-                  controller: _passwordController,
-                ),
+                focusNode: _passwordFocusNode,
+                suffixIcon: _passwordFocusNode.hasFocus
+                  ? ClearButton(controller: _passwordController)
+                  : Container(),
               ),
               SizedBox(
                 height: 8.0,
@@ -85,6 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
               CustomTextField(
                 labelText: "Confirmar Senha",
                 controller: _confirmPasswordController,
+                suffixIcon: ClearButton(
+                  controller: _confirmPasswordController,
+                ),
               ),
               ElevatedButton(
                 onPressed: () {

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
+    this.errorMessage,
     this.hintText,
     this.labelText,
     this.helperText,
@@ -13,9 +14,11 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.icon,
     this.suffixIcon,
+    this.suffix,
+    this.focusNode,
   }) : super(key: key);
 
-  final String errorMessage = '';
+  final String? errorMessage;
 
   final String? hintText;
   final String? labelText;
@@ -26,6 +29,8 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final Widget? icon;
   final Widget? suffixIcon;
+  final Widget? suffix;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +38,11 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChanged,
       obscureText: obscureText,
       controller: controller,
+      focusNode: focusNode,
       decoration: InputDecoration(
         icon: icon,
         suffixIcon: suffixIcon,
+        suffix: suffix,
         hintText: hintText,
         labelText: labelText,
         labelStyle: TextStyle(color: Colors.black),
