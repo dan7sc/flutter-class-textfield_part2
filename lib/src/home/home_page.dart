@@ -12,17 +12,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String errorMessage = "";
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _bornDateController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _cpfController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
 
-  void validateText(String value) {
-    setState(() {
-      if (value.isEmpty || (value.length < 10)) {
-        errorMessage = "Preencha corretamente o campo!";
-      } else {
-        errorMessage = "";
-      }
-    });
-    return null;
+  void changeVlue() {
+    _cpfController.value.text;
   }
 
   @override
@@ -40,44 +39,49 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               CustomTextField(
                 labelText: "Nome",
-                onChanged: (value) {  },
-                inputFormatters: [],
+                controller: _nameController,
               ),
-              SizedBox(height: 8.0,),
+              SizedBox(
+                height: 8.0,
+              ),
               CustomTextField(
                 labelText: "Telefone",
-                onChanged: (value) {},
-                inputFormatters: [],
+                controller: _phoneController,
               ),
-              SizedBox(height: 8.0,),
+              SizedBox(
+                height: 8.0,
+              ),
               CustomTextField(
                 labelText: "Data de Nascimento",
-                onChanged: (value) {},
-                inputFormatters: [],
+                controller: _bornDateController,
               ),
-              SizedBox(height: 8.0,),
+              SizedBox(
+                height: 8.0,
+              ),
               CustomTextField(
                 labelText: "E-mail",
-                onChanged: (value) {},
-                inputFormatters: [],
+                controller: _emailController,
               ),
-              SizedBox(height: 8.0,),
+              SizedBox(
+                height: 8.0,
+              ),
               CustomTextField(
                 labelText: "CPF",
-                onChanged: (value) {},
-                inputFormatters: [],
+                controller: _cpfController,
               ),
-              SizedBox(height: 8.0,),
+              SizedBox(
+                height: 8.0,
+              ),
               CustomTextField(
                 labelText: "Senha",
-                onChanged: (value) {},
-                inputFormatters: [],
+                controller: _passwordController,
               ),
-              SizedBox(height: 8.0,),
+              SizedBox(
+                height: 8.0,
+              ),
               CustomTextField(
                 labelText: "Confirmar Senha",
-                onChanged: (value) {},
-                inputFormatters: [],
+                controller: _confirmPasswordController,
               ),
               ElevatedButton(
                 onPressed: () {

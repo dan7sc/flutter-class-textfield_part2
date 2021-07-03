@@ -4,33 +4,42 @@ import 'package:flutter/services.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
-    this.hintText = '',
-    this.labelText = '',
-    this.helperText = '',
+    this.hintText,
+    this.labelText,
+    this.helperText,
     this.obscureText = false,
-    required this.onChanged,
-    required this.inputFormatters,
+    this.onChanged,
+    this.inputFormatters,
+    this.controller,
+    this.icon,
+    this.suffixIcon,
   }) : super(key: key);
 
   final String errorMessage = '';
 
-  final String hintText;
-  final String labelText;
-  final String helperText;
+  final String? hintText;
+  final String? labelText;
+  final String? helperText;
   final bool obscureText;
-  final ValueChanged<String> onChanged;
-  final List<TextInputFormatter> inputFormatters;
+  final ValueChanged<String>? onChanged;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextEditingController? controller;
+  final Widget? icon;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      // onChanged: (value) => validateText(value),
-      onChanged: (value) => onChanged(value),
+      onChanged: onChanged,
+      obscureText: obscureText,
+      controller: controller,
       decoration: InputDecoration(
-        hintText: "00/00/0000",
+        icon: icon,
+        suffixIcon: suffixIcon,
+        hintText: hintText,
         labelText: labelText,
         labelStyle: TextStyle(color: Colors.black),
-        helperText: "dd/mm/aaaa",
+        helperText: helperText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(
