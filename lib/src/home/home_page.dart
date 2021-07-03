@@ -14,21 +14,69 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String errorMessage = "";
 
+  void validateText(String value) {
+    setState(() {
+      if (value.isEmpty || (value.length < 10)) {
+        errorMessage = "Preencha corretamente o campo!";
+      } else {
+        errorMessage = "";
+      }
+    });
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               CustomTextField(
+                labelText: "Nome",
+                onChanged: (value) {  },
+                inputFormatters: [],
+              ),
+              SizedBox(height: 8.0,),
+              CustomTextField(
+                labelText: "Telefone",
+                onChanged: (value) {},
+                inputFormatters: [],
+              ),
+              SizedBox(height: 8.0,),
+              CustomTextField(
+                labelText: "Data de Nascimento",
+                onChanged: (value) {},
+                inputFormatters: [],
+              ),
+              SizedBox(height: 8.0,),
+              CustomTextField(
                 labelText: "E-mail",
-                onChanged: (String value) {  },
+                onChanged: (value) {},
+                inputFormatters: [],
+              ),
+              SizedBox(height: 8.0,),
+              CustomTextField(
+                labelText: "CPF",
+                onChanged: (value) {},
+                inputFormatters: [],
+              ),
+              SizedBox(height: 8.0,),
+              CustomTextField(
+                labelText: "Senha",
+                onChanged: (value) {},
+                inputFormatters: [],
+              ),
+              SizedBox(height: 8.0,),
+              CustomTextField(
+                labelText: "Confirmar Senha",
+                onChanged: (value) {},
                 inputFormatters: [],
               ),
               ElevatedButton(

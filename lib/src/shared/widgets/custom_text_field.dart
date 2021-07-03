@@ -21,17 +21,6 @@ class CustomTextField extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final List<TextInputFormatter> inputFormatters;
 
-  // void validateText(String value) {
-  //   setState(() {
-  //     if (value.isEmpty || (value.length < 10)) {
-  //       errorMessage = "Preencha corretamente o campo!";
-  //     } else {
-  //       errorMessage = "";
-  //     }
-  //   });
-  //   return null;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -39,7 +28,7 @@ class CustomTextField extends StatelessWidget {
       onChanged: (value) => onChanged(value),
       decoration: InputDecoration(
         hintText: "00/00/0000",
-        labelText: "Data de Nascimento",
+        labelText: labelText,
         labelStyle: TextStyle(color: Colors.black),
         helperText: "dd/mm/aaaa",
         border: OutlineInputBorder(
