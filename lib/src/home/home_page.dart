@@ -21,7 +21,8 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController _confirmPasswordController = TextEditingController();
   FocusNode _passwordFocusNode = FocusNode();
 
-  bool visible = false;
+  bool passwordVisible = false;
+  bool confirmPasswordVisible = false;
 
   @override
   void initState() {
@@ -85,12 +86,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelText: "Senha",
                 controller: _passwordController,
                 focusNode: _passwordFocusNode,
-                obscureText: visible,
+                obscureText: passwordVisible,
                 suffixIcon: VisibleWidget(
-                  visible: visible,
+                  visible: passwordVisible,
                   onPressed: () {
                     setState(() {
-                      visible = !visible;
+                      passwordVisible = !passwordVisible;
                     });
                   },
                 ),
@@ -101,8 +102,13 @@ class _MyHomePageState extends State<MyHomePage> {
               CustomTextField(
                 labelText: "Confirmar Senha",
                 controller: _confirmPasswordController,
-                suffixIcon: ClearButton(
-                  controller: _confirmPasswordController,
+                suffixIcon: VisibleWidget(
+                  visible: confirmPasswordVisible,
+                  onPressed: () {
+                    setState(() {
+                      confirmPasswordVisible = !confirmPasswordVisible;
+                    });
+                  },
                 ),
               ),
               ElevatedButton(
