@@ -21,17 +21,10 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController _confirmPasswordController = TextEditingController();
   FocusNode _passwordFocusNode = FocusNode();
 
-  void changeVlue() {
-    _cpfController.value.text;
-  }
+  bool visible = false;
 
   @override
   void initState() {
-    _passwordFocusNode.addListener(() {
-      if (_passwordFocusNode.hasPrimaryFocus) {
-        setState(() {});
-      }
-    });
     super.initState();
   }
 
@@ -87,9 +80,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelText: "Senha",
                 controller: _passwordController,
                 focusNode: _passwordFocusNode,
-                suffixIcon: _passwordFocusNode.hasFocus
-                    ? ClearButton(controller: _passwordController)
-                    : Container(),
+                obscureText: visible,
+                suffixIcon: IconButton(
+                  icon: Icon(
+                      visible ? Icons.lock_outlined : Icons.lock_open_outlined),
+                  onPressed: () {
+                    setState(() {
+                        visible = !visible;
+                    });
+                  },
+                ),
               ),
               SizedBox(
                 height: 8.0,
