@@ -32,6 +32,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void dispose() {
+    _nameController.dispose();
+    _phoneController.dispose();
+    _bornDateController.dispose();
+    _emailController.dispose();
+    _cpfController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -57,17 +64,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               CustomTextField(
-                textInputAction: TextInputAction.next,
-                labelText: "Telefone",
-                controller: _phoneController,
-                keyboardType: TextInputType.phone,
-                onEditingComplete: () {
-                  FocusScope.of(context).nextFocus();
-                },
-                inputFormatters: [
-                  LengthLimitingTextInputFormatter(14),
-                ]
-              ),
+                  textInputAction: TextInputAction.next,
+                  labelText: "Telefone",
+                  controller: _phoneController,
+                  keyboardType: TextInputType.phone,
+                  onEditingComplete: () {
+                    FocusScope.of(context).nextFocus();
+                  },
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(14),
+                  ]),
               SizedBox(
                 height: 8.0,
               ),
