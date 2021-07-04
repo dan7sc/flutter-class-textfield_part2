@@ -57,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
               CustomTextField(
                 labelText: "Telefone",
                 controller: _phoneController,
+                keyboardType: TextInputType.number,
               ),
               SizedBox(
                 height: 8.0,
@@ -64,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
               CustomTextField(
                 labelText: "Data de Nascimento",
                 controller: _bornDateController,
+                keyboardType: TextInputType.number,
               ),
               SizedBox(
                 height: 8.0,
@@ -71,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               CustomTextField(
                 labelText: "E-mail",
                 controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
               ),
               SizedBox(
                 height: 8.0,
@@ -78,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
               CustomTextField(
                 labelText: "CPF",
                 controller: _cpfController,
+                keyboardType: TextInputType.number,
               ),
               SizedBox(
                 height: 8.0,
