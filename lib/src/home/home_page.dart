@@ -102,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
               CustomTextField(
                 labelText: "Confirmar Senha",
                 controller: _confirmPasswordController,
+                obscureText: confirmPasswordVisible,
                 suffixIcon: VisibleWidget(
                   visible: confirmPasswordVisible,
                   onPressed: () {
