@@ -20,10 +20,13 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController _cpfController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
+
   FocusNode _passwordFocusNode = FocusNode();
 
   bool passwordVisible = false;
   bool confirmPasswordVisible = false;
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -108,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 textInputAction: TextInputAction.next,
                 labelText: "Senha",
                 controller: _passwordController,
-                // focusNode: _passwordFocusNode,
+                focusNode: _passwordFocusNode,
                 obscureText: passwordVisible,
                 suffixIcon: VisibleWidget(
                   visible: passwordVisible,
@@ -136,11 +139,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  FocusScope.of(context).unfocus();
-                },
-                child: Text("Unfocuss"),
+              SizedBox(
+                height: 80.0,
+              ),
+              Flex(
+                direction: Axis.horizontal,
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        FocusScope.of(context).unfocus();
+                      },
+                      child: Text("Criar conta"),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
