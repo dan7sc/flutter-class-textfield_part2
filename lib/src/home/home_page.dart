@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:class_textfield_part2/src/shared/widgets/shared_widgets.dart';
+import 'package:class_textfield_part2/src/shared/validators/text_validator.dart';
 import 'package:flutter/services.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -56,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   textInputAction: TextInputAction.next,
                   labelText: "Nome",
                   controller: _nameController,
+                  validator: (value) => Validators().validateName(value!),
                 ),
                 SizedBox(
                   height: 8.0,
