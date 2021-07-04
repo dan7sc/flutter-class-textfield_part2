@@ -38,7 +38,7 @@ class CustomTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
-  final Function? onEditingComplete;
+  final Function()? onEditingComplete;
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +49,7 @@ class CustomTextField extends StatelessWidget {
       focusNode: focusNode,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
-      onEditingComplete: () {
-        onEditingComplete!();
-      },
+      onEditingComplete: onEditingComplete,
       validator: validator,
       decoration: InputDecoration(
         icon: icon,

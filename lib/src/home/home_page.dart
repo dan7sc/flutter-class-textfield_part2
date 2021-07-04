@@ -88,9 +88,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 CustomTextField(
                   textInputAction: TextInputAction.next,
+                  validator: (value) => Validators().validateAge(value!),
                   labelText: "Data de Nascimento",
                   controller: _bornDateController,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(10),
+                  ],
                 ),
                 SizedBox(
                   height: 8.0,
