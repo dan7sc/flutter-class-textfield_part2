@@ -17,6 +17,7 @@ class CustomTextField extends StatelessWidget {
     this.suffix,
     this.focusNode,
     this.keyboardType,
+    this.textInputAction,
   }) : super(key: key);
 
   final String? errorMessage;
@@ -33,6 +34,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? suffix;
   final FocusNode? focusNode;
   final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       focusNode: focusNode,
       keyboardType: keyboardType,
+      textInputAction: textInputAction,
       decoration: InputDecoration(
         icon: icon,
         suffixIcon: suffixIcon,

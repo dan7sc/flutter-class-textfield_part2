@@ -48,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               CustomTextField(
+                textInputAction: TextInputAction.next,
                 labelText: "Nome",
                 controller: _nameController,
               ),
@@ -55,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               CustomTextField(
+                textInputAction: TextInputAction.next,
                 labelText: "Telefone",
                 controller: _phoneController,
                 keyboardType: TextInputType.number,
@@ -63,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               CustomTextField(
+                textInputAction: TextInputAction.next,
                 labelText: "Data de Nascimento",
                 controller: _bornDateController,
                 keyboardType: TextInputType.number,
@@ -71,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               CustomTextField(
+                textInputAction: TextInputAction.next,
                 labelText: "E-mail",
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -79,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               CustomTextField(
+                textInputAction: TextInputAction.next,
                 labelText: "CPF",
                 controller: _cpfController,
                 keyboardType: TextInputType.number,
@@ -87,9 +92,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               CustomTextField(
+                textInputAction: TextInputAction.next,
                 labelText: "Senha",
                 controller: _passwordController,
-                focusNode: _passwordFocusNode,
+                // focusNode: _passwordFocusNode,
                 obscureText: passwordVisible,
                 suffixIcon: VisibleWidget(
                   visible: passwordVisible,
@@ -104,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 8.0,
               ),
               CustomTextField(
+                textInputAction: TextInputAction.next,
                 labelText: "Confirmar Senha",
                 controller: _confirmPasswordController,
                 obscureText: confirmPasswordVisible,
