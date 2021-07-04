@@ -22,7 +22,8 @@ environment:
 
 dependencies:
   cpf_cnpj_validator: ^2.0.0
-  flutter_password_strength: ^0.1.6
+  password_strength: ^0.2.0
+
   flutter:
     sdk: flutter
 

@@ -1,3 +1,6 @@
+import 'package:cpf_cnpj_validator/cpf_validator.dart';
+import 'package:password_strength/password_strength.dart';
+
 class Validators {
   String? validateName(String value) {
     if (value.isEmpty) {
@@ -13,11 +16,10 @@ class Validators {
     } else {
       final dateList = value.split("/");
       try {
-        if (int.tryParse(dateList[0])! < 1 ||
-          int.tryParse(dateList[0])! > 31) {
+        if (int.tryParse(dateList[0])! < 1 || int.tryParse(dateList[0])! > 31) {
           return "Digite um dia válido";
         } else if (int.tryParse(dateList[1])! < 1 ||
-          int.tryParse(dateList[1])! > 12) {
+            int.tryParse(dateList[1])! > 12) {
           return "Digite um mês válido";
         }
         final date = DateTime(
@@ -42,6 +44,30 @@ class Validators {
       } catch (e) {
         return "Insira data no formato dd/mm/yyyy";
       }
+    }
+  }
+
+  String? cpfValidator(String value) {
+    if (CPFValidator.isValid(value)) {
+      return null;
+    } else {
+      return "CPF inválido";
+    }
+  }
+
+  String? validatePassword(String value, String value1) {
+    if (value != value1) {
+      return "As senhas não conferem";
+    }
+
+    double strength = estimatePasswordStrength(value);
+    if (strength > 0.4) {
+      return null;
+    } else {
+      var myRichRunesMessage =
+          new Runes('\u{1F51} Escolha uma senha mais forte');
+
+      return new String.fromCharCodes(myRichRunesMessage);
     }
   }
 }

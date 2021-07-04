@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:class_textfield_part2/src/shared/widgets/shared_widgets.dart';
 import 'package:class_textfield_part2/src/shared/validators/text_validator.dart';
-import 'package:flutter/services.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -22,6 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
+  FocusNode _cpfFocusNode = FocusNode();
   FocusNode _passwordFocusNode = FocusNode();
 
   bool passwordVisible = false;
@@ -43,6 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
     _cpfController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
+    _cpfFocusNode.dispose();
+    _passwordFocusNode.dispose();
     super.dispose();
   }
 
@@ -112,7 +115,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   textInputAction: TextInputAction.next,
                   labelText: "CPF",
                   controller: _cpfController,
-                  keyboardType: TextInputType.number,
+                  focusNode: _cpfFocusNode,
+                  keyboardType: TextInputType.text,
+                  validator: (cpf) => Validators().cpfValidator(cpf!),
                 ),
                 SizedBox(
                   height: 8.0,
@@ -139,6 +144,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   textInputAction: TextInputAction.next,
                   labelText: "Confirmar Senha",
                   controller: _confirmPasswordController,
+                  validator: (value) => Validators().validatePassword(
+                    value!,
+                    _passwordController.value.text,
+                  ),
                   obscureText: confirmPasswordVisible,
                   suffixIcon: VisibleWidget(
                     visible: confirmPasswordVisible,
@@ -158,8 +167,35 @@ class _MyHomePageState extends State<MyHomePage> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          _formKey.currentState?.validate();
                           FocusScope.of(context).unfocus();
+                          if (_formKey.currentState!.validate()) {
+                            showDialog(
+                              context: context,
+                              builder: (context) => Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Tudo certo por aqui",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          } else {
+                            if (Validators()
+                                    .cpfValidator(_cpfController.value.text) !=
+                                null) {
+                              _cpfFocusNode.requestFocus();
+                            }
+                          }
                         },
                         child: Text("Criar conta"),
                       ),
