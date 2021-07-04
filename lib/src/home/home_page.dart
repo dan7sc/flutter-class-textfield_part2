@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:class_textfield_part2/src/shared/widgets/shared_widgets.dart';
+import 'package:flutter/services.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -59,7 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 textInputAction: TextInputAction.next,
                 labelText: "Telefone",
                 controller: _phoneController,
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.phone,
+                onEditingComplete: () {
+                  FocusScope.of(context).nextFocus();
+                },
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(14),
+                ]
               ),
               SizedBox(
                 height: 8.0,

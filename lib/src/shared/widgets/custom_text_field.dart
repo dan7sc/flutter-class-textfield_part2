@@ -18,6 +18,7 @@ class CustomTextField extends StatelessWidget {
     this.focusNode,
     this.keyboardType,
     this.textInputAction,
+    this.onEditingComplete,
   }) : super(key: key);
 
   final String? errorMessage;
@@ -35,6 +36,7 @@ class CustomTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
+  final Function? onEditingComplete;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,9 @@ class CustomTextField extends StatelessWidget {
       focusNode: focusNode,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
+      onEditingComplete: () {
+        onEditingComplete!();
+      },
       decoration: InputDecoration(
         icon: icon,
         suffixIcon: suffixIcon,
